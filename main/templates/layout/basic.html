@@ -1,4 +1,4 @@
-{% load bootstap4 %}
+{% load bootstrap4 %}
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -8,7 +8,7 @@
             content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}Главная{% endblock %} - Доска объявлений</title>
         {% bootstrap_css %}
-        <link rel="stylesheet" type="text/css" href="{% static 'mian/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
         {% bootstrap_javascript jquery='slim' %}
     </head>
     <body class="container-fluid">
@@ -36,7 +36,7 @@
         </div>
         <div class="row">
             <nav class="col-md-auto nav flex-column border">
-                <a class="nav-link root" href="{% url 'main:index' %}">Главная</a>
+                <a class="nav-link root" href="{% url 'index' %}">Главная</a>
                 <span class="nav-link root font-weight-bold">Недвижимость</span>
                 <a class="nav-link" href="#">Жилье</a>
                 <a class="nav-link" href="#">Склады</a>
@@ -44,6 +44,7 @@
                 <span class="nav-link root font-weight-bold" href="#">Транспорт</span>
                 <a class="nav-link" href="#">Легковой</a>
                 <a class="nav-link" href="#">Грузовой</a>
+                <a class="nav-link root" href="{% url 'other_page' page='about' %}">О сайте</a>
             </nav>
             <section class="col border py-2">
                 {% bootstrap_messages %}

@@ -1,5 +1,5 @@
 header h1 {
-    background: url("bd.jpg") left / auto 100% no-repeat, url("bd.jpg") right / auto 100% no-repeat;
+    background: url("bgleft.jpg") left / auto 100% no-repeat, url("bgright.jpg") right / auto 100% no-repeat;
 }
 
 .root {
