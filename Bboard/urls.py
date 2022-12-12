@@ -15,9 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from main.views import index
+from main.views import index, BBLoginView, other_page, profile, BBLogoutView, ChangeUserInfoView, BBPasswordChangeView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('bboard/', include('main.urls'))
+    path('bboard/', include('main.urls')),
+    path('accounts/login/', BBLoginView.as_view(), name='login'),
+    path('<str:page>/', other_page, name='other_page'),
+    path('accounts/profile/', profile, name='profile'),
+    path('accounts/logout/', BBLogoutView.as_view(), name='logout'),
+    path('accounts/profile/change/', ChangeUserInfoView.as_view(), name='profile_change'),
+    path('accounts/password/change/', BBPasswordChangeView.as_view(), name='password_change')
 ]
