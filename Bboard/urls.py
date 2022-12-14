@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from main.views import index, BBLoginView, other_page, profile, BBLogoutView, ChangeUserInfoView, BBPasswordChangeView
+from main.views import RegisterDoneView, RegisterUserView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +26,7 @@ urlpatterns = [
     path('accounts/profile/', profile, name='profile'),
     path('accounts/logout/', BBLogoutView.as_view(), name='logout'),
     path('accounts/profile/change/', ChangeUserInfoView.as_view(), name='profile_change'),
-    path('accounts/password/change/', BBPasswordChangeView.as_view(), name='password_change')
+    path('accounts/password/change/', BBPasswordChangeView.as_view(), name='password_change'),
+    path('accounts/register/done/', RegisterDoneView.as_view(), name='register_done'),
+    path('accounts/register/', RegisterUserView.as_view(), name='register')
 ]
