@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from main.views import (index, BBLoginView, other_page, profile, BBLogoutView, 
                         ChangeUserInfoView, BBPasswordChangeView, 
-                        RegisterDoneView, RegisterUserView)
+                        RegisterDoneView, RegisterUserView, user_activate)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -14,5 +14,6 @@ urlpatterns = [
     path('accounts/profile/change/', ChangeUserInfoView.as_view(), name='profile_change'),
     path('accounts/password/change/', BBPasswordChangeView.as_view(), name='password_change'),
     path('accounts/register/done/', RegisterDoneView.as_view(), name='register_done'),
-    path('accounts/register/', RegisterUserView.as_view(), name='register')
+    path('accounts/register/', RegisterUserView.as_view(), name='register'),
+    path('accounts/register/activate/<str:sign>/', user_activate, name='register_activate'),
 ]
