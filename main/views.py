@@ -1,16 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+
 from django.http import HttpResponse, Http404
+
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template
+
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 from django.views.generic.edit import UpdateView, CreateView
-from django.contrib.messages.views import SuccessMessageMixin
-from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404
 from django.views.generic.base import TemplateView
+
+from django.contrib.messages.views import SuccessMessageMixin
+
+from django.urls import reverse_lazy
+
 from django.core.signing import BadSignature
+
 
 from .utilities import signer
 from .models import AdvUser
