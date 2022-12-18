@@ -22,15 +22,20 @@ class RegisterUserForm(forms.ModelForm):
                                 help_text=password_validation.password_validators_help_text_html())
     password2 = forms.CharField(label='Пароль (повторно)', widget=forms.PasswordInput,
                                 help_text='Введите тот же самый пароль для проверки')
-
+    
 
     def clean_password1(self):
+        password1 = self.cleaned_data['password1']
+        if password1:
+            password_validation.validate_password(password1)
+        return password1
+    
+    def clean(self):
         super().clean()
         password1 = self.cleaned_data['password1']
-        password2 = self.changed_data['password2']
+        password2 = self.cleaned_data['password2']
         if password1 != password2 and password2 and password1:
-            errors = {'password2': ValidationError('Введенные пароли не совпадают',
-                                    code='password_mismatch')}
+            errors = {'password2': ValidationError('Пароли не совпадают', code='password_mismatch')}
             raise ValidationError(errors)
         
     def save(self, commit=True):
