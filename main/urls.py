@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from main.views import (BBLoginView, other_page, profile, BBLogoutView, 
                         ChangeUserInfoView, BBPasswordChangeView, 
-                        RegisterDoneView, RegisterUserView, user_activate)
+                        RegisterDoneView, RegisterUserView, user_activate, DeleteUserView)
 
 from .views import index
 
@@ -18,6 +18,7 @@ urlpatterns = [
 
     path('accounts/profile/', profile, name='profile'),
     path('accounts/profile/change/', ChangeUserInfoView.as_view(), name='profile_change'),
+    path('accounts/profile/delete', DeleteUserView.as_view(), name='profile_delete'),
 
     path('accounts/password/change/', BBPasswordChangeView.as_view(), name='password_change'),
 
