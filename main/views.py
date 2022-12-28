@@ -7,7 +7,7 @@ from django.template.loader import get_template
 
 from django.contrib import messages
 from django.contrib.auth import logout
-from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -25,6 +25,7 @@ from .utilities import signer
 from .models import AdvUser
 from .forms import ChangeUserInfoForm, RegisterUserForm
 
+
 def index(request):
     return render(request, 'main/index.html')
 
@@ -41,7 +42,7 @@ class BBLoginView(LoginView):
     template_name = 'main/login.html'
 
 
-class BBLogoutView(LogoutView, LoginRequiredMixin   ):
+class BBLogoutView(LogoutView, LoginRequiredMixin):
     template_name = 'main/logout.html'
 
 
@@ -119,4 +120,18 @@ class DeleteUserView(LoginRequiredMixin, DeleteView):
             queryset = self.get_queryset()
         return get_object_or_404(queryset, pk=self.user_id)
 
-    
+
+class PasswordUserResetView(PasswordResetView):
+    template_name = 'main/password_reset.html'
+
+
+class PasswordUserResetConfirmationView(PasswordResetConfirmView):
+    template_name = 'main/password_reset_confirm.html'
+
+
+class PasswordUserResetDoneView(PasswordResetDoneView):
+    template_name = 'main/password_reset_done.html'
+
+
+class PasswordUserResetCompleteView(PasswordResetCompleteView):
+    template_name = 'main/password_reset_complete.html'

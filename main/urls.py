@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.urls import path
 from main.views import (BBLoginView, other_page, profile, BBLogoutView, 
                         ChangeUserInfoView, BBPasswordChangeView, 
-                        RegisterDoneView, RegisterUserView, user_activate, DeleteUserView)
+                        RegisterDoneView, RegisterUserView, user_activate, DeleteUserView,
+                        PasswordUserResetConfirmationView, PasswordUserResetView)
 
 from .views import index
 
