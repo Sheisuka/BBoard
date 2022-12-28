@@ -18,4 +18,22 @@ class Rubric(models.Model):
     super_rubric = models.ForeignKey('SuperRubric', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Надрубика')
 
 
+class SuperRubricManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(super_rubric__isnull=True)
+    
+class SuperRubric(Rubric)
+    objects = SuperRubricManager()
+
+    def __str__(self):
+        return self.name 
+
+    class Meta:
+        proxy = True
+        ordering = ('order', 'name')
+        verbose_name = 'Надрубика'
+        verbose_name_plural = 'Надрубики'
+
+
+
 
