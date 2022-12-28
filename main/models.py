@@ -22,7 +22,7 @@ class SuperRubricManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(super_rubric__isnull=True)
     
-class SuperRubric(Rubric)
+class SuperRubric(Rubric):
     objects = SuperRubricManager()
 
     def __str__(self):
