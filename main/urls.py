@@ -5,12 +5,14 @@ from main.views import (BBLoginView, other_page, profile, BBLogoutView,
                         RegisterDoneView, RegisterUserView, user_activate, DeleteUserView,
                         PasswordUserResetConfirmationView, PasswordUserResetView)
 
-from .views import index
+from .views import index, by_rubric
 
 app_name = 'main'
 
 urlpatterns = [
     path('', index, name='index'),
+
+    path('<int:pk>/', by_rubric, name='by_rubric'),
 
     path('<str:page>/', other_page, name='other_page'), # Единичные страницы
 

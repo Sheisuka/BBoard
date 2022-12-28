@@ -137,3 +137,7 @@ class PasswordUserResetDoneView(PasswordResetDoneView):
 
 class PasswordUserResetCompleteView(PasswordResetCompleteView):
     template_name = 'main/password_reset_complete.html'
+
+
+def by_rubric(request, pk):
+    pass
