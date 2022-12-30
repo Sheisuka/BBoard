@@ -33,3 +33,5 @@ def send_password_reset_notification(user):
 
 def get_timestamp_path(instance, filename):
     return f'{datetime.now().timestamp()} {splitext(filename)[1]}'
+
+    

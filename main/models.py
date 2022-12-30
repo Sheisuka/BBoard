@@ -9,6 +9,11 @@ class AdvUser(AbstractUser):
     send_messages = models.BooleanField(default=True, 
                                 verbose_name='Слать оповещения о новых комментариях?')
 
+    def delete(self, *args, **kwargs):
+        for bb in self.bb_set.all():
+            bb.delete()
+        super().delete(*args, **kwargs)
+
     class Meta(AbstractUser.Meta):
         pass
 
@@ -84,4 +89,3 @@ class AdditionalImage(models.Model):
     class Meta:
         verbose_name = 'Дополнительная иллюстрация'
         verbose_name_plural = 'Дополнительные иллюстрации'
-        

@@ -1,7 +1,7 @@
 from django.urls import path, include
 from django.contrib import admin
 from django.conf.urls.static import static
-import settings
+import Bboard.settings as settings
 
 from main.views import PasswordUserResetView, PasswordUserResetConfirmationView, PasswordUserResetDoneView, PasswordUserResetCompleteView
 
