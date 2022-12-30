@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -12,7 +13,20 @@ EMAIL_PORT = 1025
 
 AUTH_USER_MODEL = 'main.AdvUser'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
+
+THUMBNAIL_ASSETS = {
+    '': {
+        'default': {
+            'size': (96, 96),
+            'crop': 'scale'
+        }
+    }
+}
+
+THUMBNAIL_BASEDIR = 'thumbnails'
 # Application definition
 
 INSTALLED_APPS = [
@@ -24,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'main.apps.MainConfig',
+    'django_cleanup',
+    'easy_thumbnails',
 ]
 
 MIDDLEWARE = [
